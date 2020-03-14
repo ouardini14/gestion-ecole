@@ -1,0 +1,274 @@
+<title>home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit-icons.min.js"></script>
+<style>
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  /*background-image: url("/w3images/mac.jpg");*/
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style=" position: absolute ">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="/home" class="w3-bar-item w3-button w3-wide">EST Sidi Bennour</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="" class="w3-bar-item w3-button"><i class="fa fa-home" aria-hidden="true"></i> accueil</a>
+      <a (click)="afficheFormation()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i>  Formation </a>
+      <a *ngIf="isloged" (click)="calendar()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i> calendrier </a>
+     <a *ngIf="isloged" (click)="resultat()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+     <a *ngIf="!isloged" (click)="afficheResu()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+      <a (click)="inscrire()" class="w3-bar-item w3-button"><i class="fa fa-usd"  ></i> S'inscrire</a>
+      <a *ngIf="!isloged" (click)="login()" class="w3-bar-item w3-button"><i class="fa fa-sign-in" ></i> Connecter  </a>
+      <a *ngIf="isloged" (click)="logout()" class="w3-bar-item w3-button"><i class="fa fa-sign-out" aria-hidden="true" ></i> Deconnecter  </a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>
+
+
+<!-- Header with full-height image -->
+
+<div class="container">
+        <div class="carousel">
+            <input type="radio" id="carousel-1" name="carousel[]" checked>
+            <input type="radio" id="carousel-2" name="carousel[]">
+         <input type="radio" id="carousel-3" name="carousel[]">
+            <input type="radio" id="carousel-4" name="carousel[]">
+            <input type="radio" id="carousel-5" name="carousel[]">
+            <ul class="carousel__items">
+
+                <li class="carousel__item"><img src="../../assets/univer1.jpg" alt=""></li>
+                <li class="carousel__item"><img src="../../assets/univer2.jpg" alt=""></li>
+                <li class="carousel__item"><img src="//lh5.googleusercontent.com/-batEXUZE_e4/U8-EmLF9-hI/AAAAAAAABc0/J3tJVUa6Buk/w1358-h905-no/carousel-3.jpg" alt=""></li>
+                <li class="carousel__item"><img src="//lh5.googleusercontent.com/-gywqIeMvel0/U8-EolKdtkI/AAAAAAAABdM/G0-NHuvvJUU/w1358-h905-no/carousel-4.jpg" alt=""></li>
+                <li class="carousel__item"><img src="//lh5.googleusercontent.com/--2iANjL3ikc/U8-EoGJ18mI/AAAAAAAABdI/fBe-q3Gos6Y/w1358-h905-no/carousel-5.jpg" alt=""></li>
+            </ul>
+         <div class="carousel__prev">
+             <label for="carousel-1"></label>
+             <label for="carousel-2"></label>
+             <label for="carousel-3"></label>
+             <label for="carousel-4"></label>
+             <label for="carousel-5"></label>
+         </div>
+         <div class="carousel__next">
+           <label for="carousel-1"></label>
+           <label for="carousel-2"></label>
+           <label for="carousel-3"></label>
+           <label for="carousel-4"></label>
+           <label for="carousel-5"></label>
+         </div>
+         <div class="carousel__nav">
+           <label for="carousel-1"></label>
+           <label for="carousel-2"></label>
+           <label for="carousel-3"></label>
+           <label for="carousel-4"></label>
+           <label for="carousel-5"></label>
+         </div>
+       </div>
+     </div>
+
+<div class="w3-container" style="padding:128px 16px" id="about">
+
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>L’ECOLE SUPÉRIEURE DE TECHNOLOGIE SIDI BENNOUR</h3>
+      <p>L’Ecole Supérieure de Technologie Sidi Bennour (ESTSB) est un établissement public d’enseignement supérieur à finalité de formation des Techniciens Supérieurs. Elle a été créée en Août 2016 par le Ministère de l’Enseignement Supérieur, de la Formation des Cadres et de la Recherche Scientifique du Royaume du Maroc. L’ESTSB est une composante de l’Université Chouaib Doukkali d’El Jadida. Sa vocation est de former des Techniciens Supérieurs polyvalents, hautement qualifiés et immédiatement opérationnels après leur sortie de l’Ecole en tant que collaborateurs d’ingénieurs et de managers. Sont admis à l’ESTSB, les bacheliers de l’enseignement secondaire technique, scientifique et tertiaire. L’admission à l’Ecole (au de Diplôme Universitaire de Technologie « DUT ») se fait par voie de sélection par ordre de mérite après une présélection sur la base des notes obtenues au baccalauréat. Les candidats doivent être âgés de 22 ans au plus au 31 Décembre de l’année du concours et doivent déposer leurs dossiers de pré-inscription avant le 30 Juin de chaque année universitaire.</p>
+      <p><a href="work" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Works</a></p>
+    </div>
+    <div class="w3-col m6">
+      <img class="w3-image w3-round-large" src="../../assets/header.jpg" alt="Buildings" width="700" height="394">
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="team">
+  <h3 class="w3-center">Notre professeurs</h3>
+  <p class="w3-center w3-large">Les professeurs  </p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="../../assets/mabrouk.jpg" alt="John" style="width:330px;height: 220px;">
+        <div class="w3-container">
+          <h3>M. Mabrouk Abdelfetah</h3>
+          <p class="w3-opacity">M. Mabrouk Abdelfettah</p>
+          <p>test test</p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="../../assets/prof2.png" alt="Jane" style="width:330px;height: 220px;">
+        <div class="w3-container">
+          <h3>M. Saidi  </h3>
+          <p class="w3-opacity">M. Saidi</p>
+          <p>test test</p>
+          <p><button class="w3-button w3-light-grey w3-block" mat-raised-button matTooltip="helloworld" ><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="../../assets/profBADDI.JPG" alt="Mike" style="width:330px;height: 220px;">
+        <div class="w3-container">
+          <h3>M. baddi</h3>
+          <p class="w3-opacity">M. baddi</p>
+          <p>test</p>
+        
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
+        <div class="w3-container">
+          <h3>M. Toumi</h3>
+          <p class="w3-opacity">M. Toumi</p>
+          <p>test test</p>
+          <p><button class="w3-button w3-light-grey w3-block" uk-tooltip="title: Hello World; pos: bottom" ><i class="fa fa-envelope"></i> Contact</button></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="w3-container w3-light-grey w3-padding-64">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>notre formation </h3>
+      <p>formation geni informatique </p>
+      <p>formation technique de management </p>
+      <p>formation GA </p>
+    </div>
+    <div class="w3-col m6">
+      <p class="w3-wide"><i class="fa fa-code w3-margin-right"></i>genie informatique </p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">genie informatique</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-line-chart w3-margin-right"></i>technique de management  </p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">technique de management</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>GA </p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">GA </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Pricing Section -->
+<div class="w3-container w3-center w3-dark-grey" style="padding:45px 16px" id="pricing">
+  <h3 class="w3-center">contactez nous</h3>
+  <p class="w3-center w3-large">Permet d'entrer en contact. Envoie-nous un message</p>
+  <div style="margin-top:8px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> El Jadida</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +212 .......</p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+    <!-- Image of location/map -->
+
+  </div>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:2px" id="contact">
+
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p><a href="https://www.facebook.com/Aymane.EL.Khazenti" title="Aymane EL-KHAZENTI" target="_blank" class="w3-hover-text-green">aelkhazenti@gmail.com</a></p>
+</footer>

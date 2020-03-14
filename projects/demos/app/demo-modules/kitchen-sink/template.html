@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script type='text/javascript' src=' /node_modules/jspdf/dist/jspdf.min.js'></script>
+<script type='text/javascript' src='/node_modules/jquery/dist/jquery.min.js'></script>
+<script type='module' src='/node_modules/html2canvas/dist/html2canvas.min.js'></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+   
+  </head>
+  <body id="j">
+
+    <!-- Navbar (sit on top) -->
+<div class="w3-top" style=" position: absolute ">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="/home" class="w3-bar-item w3-button w3-wide">EST Sidi Bennour</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="" class="w3-bar-item w3-button"><i class="fa fa-home" aria-hidden="true"></i> accueil</a>
+      <a (click)="afficheFormation()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i>  Formation </a>
+      <a *ngIf="isloged" (click)="calendar()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i> calendrier </a>
+     <a *ngIf="isloged" (click)="resultat()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+     <a *ngIf="!isloged" (click)="afficheResu()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+      <a (click)="inscrire()" class="w3-bar-item w3-button"><i class="fa fa-usd"  ></i> S'inscrire</a>
+      <a *ngIf="!isloged" (click)="login()" class="w3-bar-item w3-button"><i class="fa fa-sign-in" ></i> Connecter  </a>
+      <a *ngIf="isloged" (click)="logout()" class="w3-bar-item w3-button"><i class="fa fa-sign-out" aria-hidden="true" ></i> Deconnecter  </a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+
+<br><br>
+<br><br>
+    <h1 class="text-center">calendar for {{field}} /{{s}}</h1>
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Month)"
+        [class.active]="view === CalendarView.Month"
+      >
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Week)"
+        [class.active]="view === CalendarView.Week"
+      >
+        Week
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Day)"
+        [class.active]="view === CalendarView.Day"
+      >
+        Day
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-day-view>
+</div>
+
+</body>
+<br /><br /><br />
+
+
+
+<div class="text-center col-md-4">
+  <div class="btn-group">
+    <div
+      class="btn btn-primary"
+      (click)="setfield('GI')"
+      [class.active]="field === 'GI'"
+    >
+      GI
+    </div>
+    <div
+      class="btn btn-primary"
+      (click)="setfield('TM')"
+      [class.active]="field === 'TM'"
+
+    >
+      TM
+    </div>
+    <div
+      class="btn btn-primary"
+      (click)="setfield('GA')"
+      [class.active]="field === 'GA'"
+
+    >
+      GA
+    </div>
+    </div>
+</div>
+
+<div class="text-center col-md-4">
+  <div class="btn-group">
+    <div
+    class="btn btn-dark"
+      (click)="setS('S1')"
+      [class.active]="s === 'S1'"
+
+    >
+      S1
+    </div>
+    <div
+    class="btn btn-dark"
+      (click)="setS('S2')"
+      [class.active]="s === 'S2'"
+
+    >
+      S2
+    </div>
+    <div
+    class="btn btn-dark"
+      (click)="setS('S3')"
+      [class.active]="s === 'S3'"
+
+    >
+      S3
+    </div>
+    <div
+    class="btn btn-dark"
+    (click)="setS('S4')"
+    [class.active]="s === 'S4'"
+
+  >
+    S4
+  </div>  </div>
+</div>
+
+<br />
+
+<h3>
+  Edit events
+
+  <button class="btn btn-light pull-right" (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Primary color</th>
+        <th>Secondary color</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="event.title"
+            (keyup)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.primary"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color.secondary"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.start"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.end"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="btn btn-success pull-right" (click)="save()">
+  Save
+</button>
+</html>
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+      OK
+    </button>
+  </div>
+</ng-template>

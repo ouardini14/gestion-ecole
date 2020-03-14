@@ -1,0 +1,114 @@
+<mwl-navbar></mwl-navbar>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  
+
+
+<div class="card"  >
+<div class="row">
+
+    <div class="col-md-5"> <img src="../../assets/undraw_add_user_ipe3.png" style="width: 120%;" > </div>
+
+    <div class="card-body col-md-7 ">
+        
+        <form>
+            <div class="card bg-light">
+                <div class="card-header bg-info" >
+                  ajouter un etudiant
+                </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >Nom </label>
+                <input type="text" class="form-control"  placeholder="Nom" name="nom" [(ngModel)]="data.nom" >
+              </div>
+              <div class="form-group col-md-6">
+                
+                <label >Prenom</label>
+                <input type="text" class="form-control"  placeholder="Prenom" name="prenom" [(ngModel)]="data.prenom" >
+               
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+              <label >CIN</label>
+              <input type="text" class="form-control"  placeholder="La carte nationale d'identité" name="cin" [(ngModel)]="data.cin" >
+            </div>
+            
+                <div class="form-group col-md-6">
+              <label > CNE </label>
+              <input type="text" class="form-control" placeholder="Le code national de l'étudiant" name="cne" [(ngModel)]="data.cne">
+            </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label >email</label>
+                <input type="text" class="form-control" placeholder="exemple@gmail.com" name="email" [(ngModel)]="data.email">
+              </div>
+              <div class="form-group col-md-6">
+                  <label >telephone</label>
+                  <input type="text" class="form-control"  placeholder="0612345678" name="tele" [(ngModel)]="data.tele" >
+              </div>
+              
+          
+            </div>
+             
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label >date de naissance</label>
+                  <input type="date" class="form-control"   name="dateN" [(ngModel)]="data.dateN" >
+                </div>
+                <div class="form-group col-md-6">
+                    <label >lieu de naissance</label>
+                    <input type="text" class="form-control"  placeholder="lieu de naissance" name="lieu" [(ngModel)]="data.lieu" >
+                </div>
+                
+            
+              </div>
+
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label >spes</label>
+                  <select class="form-control" name="spes" [(ngModel)]="data.spes"  >
+                      <option >GI </option>
+                      <option> TM </option>
+                      <option >GA </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label >niveaux</label>
+                    <select class="form-control" name="niveaux" [(ngModel)]="data.niveaux"  >
+                        <option >S1 </option>
+                        <option> S2 </option>
+                        <option >S3 </option>
+                        <option >S4 </option>
+                      </select>
+                </div>
+                
+            
+              </div>
+              
+          </div>
+
+            <button type="button" class="btn btn-success" (click)="insertEtud()">enregistrer</button>
+ 
+          </form>
+    </div>
+
+ 
+</div>
+
+</div>
+
+
+<script src="/__/firebase/7.8.0/firebase-app.js"></script>
+<script src="/__/firebase/7.8.0/firebase-analytics.js"></script>
+<script src="/__/firebase/init.js"></script>

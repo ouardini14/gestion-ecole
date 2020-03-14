@@ -1,0 +1,66 @@
+
+
+<title>home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  /*background-image: url("/w3images/mac.jpg");*/
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top" style=" position: absolute ">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="/home" class="w3-bar-item w3-button w3-wide">EST Sidi Bennour</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="" class="w3-bar-item w3-button"><i class="fa fa-home" aria-hidden="true"></i> accueil</a>
+      <a (click)="afficheFormation()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i>  Formation </a>
+      <a *ngIf="isloged" (click)="calendar()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i> calendrier </a>
+
+     <a *ngIf="isloged" (click)="resultat()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+     <a *ngIf="!isloged" (click)="afficheResu()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
+      <a (click)="inscrire()" class="w3-bar-item w3-button"><i class="fa fa-usd"  ></i> S'inscrire</a>
+      <a *ngIf="!isloged" (click)="login()" class="w3-bar-item w3-button"><i class="fa fa-sign-in" ></i> Connecter  </a>
+      <a *ngIf="isloged" (click)="logout()" class="w3-bar-item w3-button"><i class="fa fa-sign-out" aria-hidden="true" ></i> Deconnecter  </a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+  <a href="" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>

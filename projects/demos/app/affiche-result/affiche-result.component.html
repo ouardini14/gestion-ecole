@@ -1,0 +1,373 @@
+<mwl-navbar></mwl-navbar>
+<router-outlet></router-outlet>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
+<style>
+#e{
+padding-top:15%;
+padding-left:15%;
+
+
+}
+
+
+</style>
+
+<br>
+
+<br>
+<div id="e" class="uk-padding ">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label >spes</label>
+          <select class="form-control" name="spes" [(ngModel)]="data.spes"  >
+              <option >GI </option>
+              <option> TM </option>
+              <option >GA </option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label >niveaux</label>
+            <select class="form-control" name="niveaux" [(ngModel)]="data.niveaux"  >
+                <option >S1 </option>
+                <option> S2 </option>
+                <option >S3 </option>
+                <option >S4 </option>
+              </select>
+        </div>
+        
+        <div class="form-group col-md-2">
+            <label >affiche</label>
+            <button class=" form-control uk-button uk-button-primary " (click)="afficheEtud()">affiche</button>
+        </div>
+      </div>
+</div>
+
+
+<div class="uk-padding "  *ngIf="isSearch===true" >
+<table class="uk-table uk-table-hover uk-table-divider" >
+    <thead>
+        <tr>
+            <th>CNE</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Spécialité</th>
+            <th>Niveaux</th>
+            <th>Affiche</th>
+            <th>supprimer</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of etudArra" >
+            <td>{{item.cne}}</td>
+            <td>{{item.nom}}</td>
+            <td>{{item.prenom}}</td>
+            <td>{{item.spes}}</td>
+            <td>{{item.niveaux}}</td>
+      
+            <td><button (click)="editforms1(item.$key)" class="uk-button uk-button-default" (click)="openS1(contS1)" (click)="openS2(contS2)" (click)="openS3(contS3)"  (click)="editforms1(item.$key)" >affiche</button></td>
+            <td><button class="uk-button uk-button-danger" (click)="supri(item.$key)">supprimer</button></td>
+           
+           
+           
+           
+           
+            <div  >
+                <ng-template #contS1 let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">{{item.cne}} // {{item.nom}} {{item.prenom}}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">            
+                    <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >algebre 1</label>
+                          <input type="text" [(ngModel)]="data.algebre"  >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >analyse 1</label>
+                            <input type="text"   [(ngModel)]="data.analyse"  >
+                        </div>
+                      </div>
+
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >algorithmique </label>
+                          <input type="text"  [(ngModel)]="data.algorithmique"  >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >langageC</label>
+                            <input type="text" [(ngModel)]="data.langageC"   >
+                        </div>
+                      </div>
+            
+                    
+                    <div class="form-row" >
+                        <div class="form-group col-md-4" >         
+                          <label >bureautique </label>
+                          <input type="text"  [(ngModel)]="data.bureautique" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >francais</label>
+                            <input type="text"   [(ngModel)]="data.francais" >
+                        </div>
+                      </div>
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >anglais </label>
+                          <input type="text"  [(ngModel)]="data.anglais" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >droit</label>
+                            <input type="text"  [(ngModel)]="data.droit" >
+                        </div>
+                      </div>
+
+
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >electronique </label>
+                          <input type="text" [(ngModel)]="data.electronique" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >industri</label>
+                            <input type="text"  [(ngModel)]="data.industri" >
+                        </div>
+                      </div>
+
+
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >architecture </label>
+                          <input type="text"  [(ngModel)]="data.architecture" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >resultat</label>
+                            <input type="text" value="{{item.resultat}}"   >
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="validS1()">Save</button>
+                      </div>
+                </ng-template>
+            </div>
+            
+
+
+
+
+            <div  >
+                <ng-template #contS2 let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">{{item.cne}} // {{item.nom}} {{item.prenom}}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">            
+                        <div class="form-row" >
+                            <div class="form-group col-md-4" >
+                                
+                              <label >algebre 2</label>
+                              <input type="text"[(ngModel)]="data.algebre2"  >
+                            </div>
+                            <div class="form-group col-md-2" ></div>
+                
+                            <div class="form-group col-md-4">
+                                <label >analyse 2</label>
+                                <input type="text"  [(ngModel)]="data.analyse2"  >
+                            </div>
+                          </div>
+
+                          <div class="form-row" >
+                            <div class="form-group col-md-4" >
+                                
+                              <label >base de donne </label>
+                              <input type="text" [(ngModel)]="data.bdd"  >
+                            </div>
+                            <div class="form-group col-md-2" ></div>
+                
+                            <div class="form-group col-md-4">
+                                <label >vb.net </label>
+                                <input type="text"  [(ngModel)]="data.vbdotnet"  >
+                            </div>
+                          </div>
+            
+                    
+
+
+
+                    <div class="form-row" >
+                        <div class="form-group col-md-4" >         
+                          <label >merise </label>
+                          <input type="text" [(ngModel)]="data.merise" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >langage C avancee</label>
+                            <input type="text" [(ngModel)]="data.langageCAvs"   >
+                        </div>
+                      </div>
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >C ++  </label>
+                          <input type="text" [(ngModel)]="data.Cplus"  >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >reseaux</label>
+                            <input type="text"  [(ngModel)]="data.reseaux"  >
+                        </div>
+                      </div>
+
+
+                      <div class="form-row" >
+                        <div class="form-group col-md-4" >
+                            
+                          <label >sysExploi </label>
+                          <input type="text"  [(ngModel)]="data.sysExploi" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >resultat</label>
+                            <input type="text"  [(ngModel)]="data.architecture"  >
+                        </div>
+                      </div>
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="validS2()">Save</button>
+                      </div>
+                </ng-template>
+              
+
+            </div>
+            
+
+                
+
+
+
+            <div  >
+                <ng-template #contS3 let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">{{item.cne}} // {{item.nom}} {{item.prenom}}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">            
+                        <div class="form-row" >
+                            <div class="form-group col-md-4" >
+                                
+                              <label >reseaux avances</label>
+                              <input type="text"  [(ngModel)]="data.reseauxAVS" >
+                            </div>
+                            <div class="form-group col-md-2" ></div>
+                
+                            <div class="form-group col-md-4">
+                                <label >dev web</label>
+                                <input type="text"   [(ngModel)]="data.devWEB"  >
+                            </div>
+                          </div>
+
+                          <div class="form-row" >
+                            <div class="form-group col-md-6" >
+                                
+                              <label >base de donne avances </label>
+                              <input type="text"  [(ngModel)]="data.bddAVS" >
+                            </div>
+                            <div class="form-group col-md-2" ></div>
+                
+                    
+                          </div>
+            
+                    
+                    <div class="form-row" >
+                        <div class="form-group col-md-4" >         
+                          <label >JAVA </label>
+                          <input type="text"  [(ngModel)]="data.java" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+             
+                      </div>
+
+
+                    <div class="form-row" >
+                        <div class="form-group col-md-4" >         
+                          <label >U.M.L </label>
+                          <input type="text"   [(ngModel)]="data.uml" >
+                        </div>
+                        <div class="form-group col-md-2" ></div>
+            
+                        <div class="form-group col-md-4">
+                            <label >dev web 2</label>
+                            <input type="text"   [(ngModel)]="data.devWEB2"  >
+                        </div>
+                      </div>
+
+                      
+                    
+                    
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="validS3()">Save</button>
+                      </div>
+                </ng-template>
+                
+            </div>
+            
+
+
+
+
+
+        </tr>
+
+    </tbody>
+</table>
+</div>
+
+
