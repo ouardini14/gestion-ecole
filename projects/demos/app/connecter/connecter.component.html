@@ -3,31 +3,21 @@
 <br><br>
 <br><br>
 <br><br>
-<style>
-  ::-webkit-input-placeholder {
-   text-align: center;
-}
-form{
-  padding-right: 25%;
-  padding-left: 25%;
 
-}
 
-</style>
+<form >
 
-<form class="text-center" >
-
-    <div class="container text-center" >
+    <div class="container" >
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required  [(ngModel)]="email" >
   
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="mdp">
       <script> consol.log("hello")</script>
-      <button type="button"   (click)="login()">  Login</button>
+      <button type="button" (click)="login()">  Login</button>
       
       
-      
+  
      
     </div>
   

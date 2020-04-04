@@ -96,6 +96,7 @@ export class AfficheetudComponent implements OnInit {
  
 
   afficheEtud(){   
+    $("#e").css({"padding-top": "4%",})
     this.etudlist = this.db.list('noteModule/'+this.data.spes+'/'+this.data.niveaux);
     this.etudArra = []
     this.etudlist.snapshotChanges().subscribe(actions=>{

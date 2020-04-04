@@ -31,6 +31,35 @@ body, html {
 .w3-bar .w3-button {
   padding: 16px;
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 50%; /* IE 10 */
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
 
 </style>
 <body>
@@ -42,7 +71,7 @@ body, html {
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
       <a href="" class="w3-bar-item w3-button"><i class="fa fa-home" aria-hidden="true"></i> accueil</a>
-      <a (click)="afficheFormation()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i>  Formation </a>
+      <a (click)="afficheFormation()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i>  Formation  </a>
       <a *ngIf="isloged" (click)="calendar()" class="w3-bar-item w3-button"><i class="fa fa-bandcamp"></i> calendrier </a>
      <a *ngIf="isloged" (click)="resultat()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
      <a *ngIf="!isloged" (click)="afficheResu()" class="w3-bar-item w3-button" ><i class="fa fa-eye" aria-hidden="true"  ></i> afficher les resultats</a> 
@@ -68,102 +97,124 @@ body, html {
   <a href="" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
 </nav>
 
+<img src="../../assets/home-bg.jpg" alt="home page" style="padding: 5px; height: 500px;width: 100%; " >
 
-<!-- Header with full-height image -->
 
-<div class="container">
-        <div class="carousel">
-            <input type="radio" id="carousel-1" name="carousel[]" checked>
-            <input type="radio" id="carousel-2" name="carousel[]">
-         <input type="radio" id="carousel-3" name="carousel[]">
-            <input type="radio" id="carousel-4" name="carousel[]">
-            <input type="radio" id="carousel-5" name="carousel[]">
-            <ul class="carousel__items">
-
-                <li class="carousel__item"><img src="../../assets/univer1.jpg" alt=""></li>
-                <li class="carousel__item"><img src="../../assets/univer2.jpg" alt=""></li>
-                <li class="carousel__item"><img src="//lh5.googleusercontent.com/-batEXUZE_e4/U8-EmLF9-hI/AAAAAAAABc0/J3tJVUa6Buk/w1358-h905-no/carousel-3.jpg" alt=""></li>
-                <li class="carousel__item"><img src="//lh5.googleusercontent.com/-gywqIeMvel0/U8-EolKdtkI/AAAAAAAABdM/G0-NHuvvJUU/w1358-h905-no/carousel-4.jpg" alt=""></li>
-                <li class="carousel__item"><img src="//lh5.googleusercontent.com/--2iANjL3ikc/U8-EoGJ18mI/AAAAAAAABdI/fBe-q3Gos6Y/w1358-h905-no/carousel-5.jpg" alt=""></li>
-            </ul>
-         <div class="carousel__prev">
-             <label for="carousel-1"></label>
-             <label for="carousel-2"></label>
-             <label for="carousel-3"></label>
-             <label for="carousel-4"></label>
-             <label for="carousel-5"></label>
-         </div>
-         <div class="carousel__next">
-           <label for="carousel-1"></label>
-           <label for="carousel-2"></label>
-           <label for="carousel-3"></label>
-           <label for="carousel-4"></label>
-           <label for="carousel-5"></label>
-         </div>
-         <div class="carousel__nav">
-           <label for="carousel-1"></label>
-           <label for="carousel-2"></label>
-           <label for="carousel-3"></label>
-           <label for="carousel-4"></label>
-           <label for="carousel-5"></label>
-         </div>
-       </div>
-     </div>
-
-<div class="w3-container" style="padding:128px 16px" id="about">
-
-  <p class="w3-center w3-large">Key features of our company</p>
-  <div class="w3-row-padding w3-center" style="margin-top:64px">
-    <div class="w3-quarter">
-      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-      <p class="w3-large">Responsive</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Passion</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Design</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-    <div class="w3-quarter">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
-      <p class="w3-large">Support</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-    </div>
-  </div>
-</div>
 
 <!-- Promo Section - "We know design" -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px">
   <div class="w3-row-padding">
     <div class="w3-col m6">
-      <h3>L’ECOLE SUPÉRIEURE DE TECHNOLOGIE SIDI BENNOUR</h3>
+      <h3>L’ECOLE SUPÉRIEURE DE TECHNOLOGIE SIDI BENNOUR </h3>
       <p>L’Ecole Supérieure de Technologie Sidi Bennour (ESTSB) est un établissement public d’enseignement supérieur à finalité de formation des Techniciens Supérieurs. Elle a été créée en Août 2016 par le Ministère de l’Enseignement Supérieur, de la Formation des Cadres et de la Recherche Scientifique du Royaume du Maroc. L’ESTSB est une composante de l’Université Chouaib Doukkali d’El Jadida. Sa vocation est de former des Techniciens Supérieurs polyvalents, hautement qualifiés et immédiatement opérationnels après leur sortie de l’Ecole en tant que collaborateurs d’ingénieurs et de managers. Sont admis à l’ESTSB, les bacheliers de l’enseignement secondaire technique, scientifique et tertiaire. L’admission à l’Ecole (au de Diplôme Universitaire de Technologie « DUT ») se fait par voie de sélection par ordre de mérite après une présélection sur la base des notes obtenues au baccalauréat. Les candidats doivent être âgés de 22 ans au plus au 31 Décembre de l’année du concours et doivent déposer leurs dossiers de pré-inscription avant le 30 Juin de chaque année universitaire.</p>
-      <p><a href="work" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Works</a></p>
     </div>
     <div class="w3-col m6">
-      <img class="w3-image w3-round-large" src="../../assets/header.jpg" alt="Buildings" width="700" height="394">
+      <img class="w3-image w3-round-large" src="../../assets/1.jpg" alt="Buildings" width="700" height="394">
+    </div>
+  </div>
+</div><br><br><br>
+<div class="divider">
+  <h2 class="w3-center"><h1 class="LC20lb DKV0Md" style="text-align: center;">Nos filli&egrave;res</h1>
+    <p>&nbsp;</p></h2>
+  
+	<div id="fi" class="container">
+		<div class="row">
+			<div  class="col-md-4 col-sm-6">
+				<div class="divider-wrapper divider-one">
+					
+					<h2 class="text-center">Genie Informatique</h2>
+					<p><p>Administration de Syst&egrave;mes et de R&eacute;seaux (ASR) :</p>
+					<p>La r&eacute;partition et le partage des ressources mat&eacute;rielles, logicielles et informationnelles dans les syst&egrave;mes et r&eacute;seaux ont conduit &agrave; une &eacute;volution de certains m&eacute;tiers de l&rsquo;informatique et &agrave; l&rsquo;&eacute;mergence de nouveaux m&eacute;tiers. Parmi ces derniers, figurent ceux qui prennent en charge l&rsquo;ensemble des t&acirc;ches relatives &agrave; l&rsquo;administration et &agrave; la gestion d&rsquo;un parc informatique (organis&eacute; ou &agrave; organiser) en r&eacute;seau.</p>
+					<p>Les comp&eacute;tences vis&eacute;es dans cette option s&rsquo;inscrivent dans ce cadre et correspondent, au niveau technique, &agrave; l&rsquo;exercice de fonctions d&rsquo;interface entre les utilisateurs, les fournisseurs d&rsquo;&eacute;quipements mat&eacute;riels et logiciels ou prestataires externes, les gestionnaires et les d&eacute;cideurs.</p>
+					<p>Ces comp&eacute;tences sont principalement :</p>
+					<p>&ndash; le choix et l&rsquo;installation des &eacute;quipements mat&eacute;riels et logiciels relatifs &agrave; l&rsquo;interconnexion au niveau d&rsquo;un site ou entre sites distants</p>
+					<p>&ndash; le choix, la mise en &oelig;uvre et le test de l&rsquo;&eacute;lectronique active utilis&eacute;e dans les diff&eacute;rents &eacute;quipements</p>
+					<p>&ndash; le choix et la mise en &oelig;uvre de configurations de type client/serveur</p>
+					<p>&ndash; l&rsquo;administration d&rsquo;un r&eacute;seau local ou &eacute;tendu</p>
+					<p>&ndash; l&rsquo;administration d&rsquo;un ou plusieurs syst&egrave;mes de bases de donn&eacute;es d&rsquo;entreprise</p>
+				</div>
+			</div>
+			<div  class="col-md-4 col-sm-6">
+				<div class="divider-wrapper divider-two">
+					<h2 class="text-center">Techniques de Management</h2>
+					<p><p>Former des techniciens sup&eacute;rieurs en techniques de management qui disposent de&nbsp; connaissances et&nbsp; de comp&eacute;tences appr&eacute;ciables relative aux organisations, priv&eacute;es et publiques.</p>
+					<p><strong>D&eacute;bouch&eacute;s potentiels</strong>&nbsp;:</p>
+					<p>&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Int&eacute;grer l&rsquo;entreprise priv&eacute;e et publique</p>
+					<p>&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cr&eacute;ation d&rsquo;entreprise</p>
+					<p>&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fonction publique</p>
+					<p>&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gestionnaire</p>
+					<p>&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Technicien en informatique de gestion</p>
+					<p><strong>Conditions d&rsquo;acc&egrave;s :</strong></p>
+					<p>&ndash; Acc&egrave;s sur &eacute;tude de dossier</p>
+					<p>&ndash; Baccalaur&eacute;ats Scientifiques et Techniques</p>
+					<p><strong>Options&nbsp;:</strong></p>
+					<p>&ndash; Comptabilit&eacute; en Normes Fran&ccedil;aises et Internationales.</p>
+					<p>&ndash; Gestion des banques et&nbsp; assurances</p>
+					<p>&ndash; Gestion des Ressources Humaines.</p>
+				</div>
+      </div>
+    
+			<div class="col-md-4 col-sm-6">
+				<div class="divider-wrapper divider-three">
+					<h2  class="text-center">Genie Agricole</h2>
+					<p><p>Le DUT agronomie est pr&eacute;cis&eacute;ment le DUT g&eacute;nie biologique option agronomie ou DUT GB agro. En effet le DUT g&eacute;nie biologique peut proposer les options agronomie, analyse biologique et biochimique et industrie alimentaire et biologique. Il s&rsquo;agit d&rsquo;un&nbsp;<strong>dipl&ocirc;me d&rsquo;&Eacute;tat de niveau&nbsp;bac+2</strong>&nbsp;accessible directement apr&egrave;s le bac.</p>
+					<p>Au sein de ce cursus d&rsquo;une dur&eacute;e de deux ans, les &eacute;tudiants apprennent les techniques d&rsquo;am&eacute;lioration des conditions de production agricole pour travailler dans le domaine de la qualit&eacute; ou du commerce. Cette formation professionnalisante est disponible dans les&nbsp;<strong>Instituts Universitaires de Technologie</strong>&nbsp;et peut &ecirc;tre suivie&nbsp;en alternance&nbsp;si les &eacute;tudiants souhaitent acqu&eacute;rir de l&rsquo;exp&eacute;rience rapidement via&nbsp;<strong>un contrat de professionnalisation ou un contrat d&rsquo;apprentissage</strong>.</p>
+				</div>
+			</div>
     </div>
   </div>
 </div>
 
+
+<div id="portfolio">
+	<div class="container">
+	 <h2 class="w3-center"> <h1 class="LC20lb DKV0Md" style="text-align: center;">Activités Récentes</h1>
+          <p>&nbsp;</p></h2>	
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+       		
+         </div>
+
+
+           	<div class="row2">
+              <div class="column">
+
+			<img src="../../assets/1.jpg" style="width:100%">
+
+
+			<img src="../../assets/2.jpg" style="width:100%">
+			<img src="../../assets/3.jpg" style="width:100%">
+
+
+			<img src="../../assets/4.jpg" style="width:100%">
+    </div>
+    <div class="column">
+			<img src="../../assets/5.jpg" style="width:100%">
+
+			<img src="../../assets/6.jpg" style="width:100%">
+
+			<img src="../../assets/7.jpg" style="width:100%">
+			<img src="../../assets/8.jpg" style="width:100%">
+          </div>
+        </div>
+        
+        </div>
+      </div>
+
+
 <!-- Team Section -->
-<div class="w3-container" style="padding:128px 16px" id="team">
-  <h3 class="w3-center">Notre professeurs</h3>
+<div class="w3-container text-center" style="padding:128px 16px" id="team">
+  <h2 class="w3-center"> <h1 class="LC20lb DKV0Md" style="text-align: center;">Notre professeurs</h1>
+    <p>&nbsp;</p></h2>
   <p class="w3-center w3-large">Les professeurs  </p>
-  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+  <div class=" w3-row-padding w3-grayscale " style="margin-top:64px">
+    <div class=" text-center">
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
         <img src="../../assets/mabrouk.jpg" alt="John" style="width:330px;height: 220px;">
         <div class="w3-container">
           <h3>M. Mabrouk Abdelfetah</h3>
           <p class="w3-opacity">M. Mabrouk Abdelfettah</p>
-          <p>test test</p>
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        
         </div>
       </div>
     </div>
@@ -173,8 +224,6 @@ body, html {
         <div class="w3-container">
           <h3>M. Saidi  </h3>
           <p class="w3-opacity">M. Saidi</p>
-          <p>test test</p>
-          <p><button class="w3-button w3-light-grey w3-block" mat-raised-button matTooltip="helloworld" ><i class="fa fa-envelope"></i> Contact</button></p>
         </div>
       </div>
     </div>
@@ -184,25 +233,12 @@ body, html {
         <div class="w3-container">
           <h3>M. baddi</h3>
           <p class="w3-opacity">M. baddi</p>
-          <p>test</p>
-        
-          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
-        <div class="w3-container">
-          <h3>M. Toumi</h3>
-          <p class="w3-opacity">M. Toumi</p>
-          <p>test test</p>
-          <p><button class="w3-button w3-light-grey w3-block" uk-tooltip="title: Hello World; pos: bottom" ><i class="fa fa-envelope"></i> Contact</button></p>
-          
         </div>
       </div>
     </div>
   </div>
+  </div>
+
 </div>
 
 <!-- Modal for full size images on click-->
@@ -214,31 +250,7 @@ body, html {
   </div>
 </div>
 
-<!-- Skills Section -->
-<div class="w3-container w3-light-grey w3-padding-64">
-  <div class="w3-row-padding">
-    <div class="w3-col m6">
-      <h3>notre formation </h3>
-      <p>formation geni informatique </p>
-      <p>formation technique de management </p>
-      <p>formation GA </p>
-    </div>
-    <div class="w3-col m6">
-      <p class="w3-wide"><i class="fa fa-code w3-margin-right"></i>genie informatique </p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">genie informatique</div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-line-chart w3-margin-right"></i>technique de management  </p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">technique de management</div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>GA </p>
-      <div class="w3-grey">
-        <div class="w3-container w3-dark-grey w3-center" style="width:99.9%">GA </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 
@@ -261,14 +273,4 @@ body, html {
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64">
-  
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
-  <p><a href="https://www.facebook.com/Aymane.EL.Khazenti" title="Aymane EL-KHAZENTI" target="_blank" class="w3-hover-text-green">aelkhazenti@gmail.com</a></p>
-</footer>
+

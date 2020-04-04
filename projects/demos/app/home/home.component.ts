@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare const me: any;
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
     }
     
    }
+   
   calendar(){
     this.router.navigate(['/kitchen-sink']); 
 }
@@ -40,8 +42,7 @@ afficheFormation(){
 login(){
   this.router.navigate(['/login']);
 }
-  ngOnInit() {
-  }
+  ngOnInit() { }
   logout(){
     this.isloged=false
     localStorage.setItem('isloged',"false")
