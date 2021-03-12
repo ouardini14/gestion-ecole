@@ -169,7 +169,7 @@
     "firebase": "^7.10.0",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "positioning": "^2.0.1",
     "sweetalert2": "^9.9.0"
   },
